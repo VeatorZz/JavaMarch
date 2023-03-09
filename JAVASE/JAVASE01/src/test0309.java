@@ -4,10 +4,10 @@ class Outerclass{
     private  int data2 =20;
     public static  int data3 =30;
 
-    static class Innerclass{
+    class Innerclass{
         public  int data =410;
         private  int data5=500;
-        public static  int data6=60;
+        public  int data6=60;
         Innerclass(){
             System.out.println("Innerclass");
         }
