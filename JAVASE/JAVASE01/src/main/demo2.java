@@ -1,6 +1,21 @@
 package main;
 
+import com.sun.javafx.charts.ChartLayoutAnimator;
+class Outerclass{
+    public  int data1 =10;
+    private  int data2 =20;
+    public static  int data3 =30;
+    class  Innerclass{
+        public  int data4 =40;
+        public  int data5 =50;
+        public  Innerclass(){
+            System.out.println("InnerClass的构造方法");
+        }
+    }
+}
+
 public class demo2 {
+
 
     static class Student{
 
