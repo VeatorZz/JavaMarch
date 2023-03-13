@@ -20,9 +20,12 @@ public class test0309 {
 
 
     public static void main(String[] args) {
-        Outerclass outerclass =new Outerclass();
-        System.out.println(outerclass.data1);
-        Outerclass.Innerclass innerclass =outerclass.new Innerclass();
-
+        int[]array={1,2,3,4};
+        try{
+            System.out.println(array[9]);
+        }catch (ArrayIndexOutOfBoundsException e){
+            e.printStackTrace();
+            System.out.println("捕获到了一个异常");
+        }
     }
 }
