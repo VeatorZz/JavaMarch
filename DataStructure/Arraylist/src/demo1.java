@@ -97,6 +97,21 @@ public class demo1 {
            }
            this.elem[pos]=value;
         }
+        public void del(int value){
+            int m = indexOf(value);
+            if(value ==-1){
+                System.out.println("不存在你要删除的数据");
+                return;
+            }
+            for (int i = m; i < this.UseSize-1; i++) {
+                this.elem[i] =this.elem[i+1];
+            }
+            this.UseSize--;
+            this.elem[UseSize]=0;
+        }
+        public void clear(){
+           this.UseSize =0;
+        }
     }
 
 
@@ -104,14 +119,17 @@ public class demo1 {
     public static void main(String[] args) {
         MyArrayList arrayList =new MyArrayList();
         arrayList.add(0,1);
-        arrayList.add(1,1);
-        arrayList.add(2,1);
-        arrayList.add(3,1);
-        arrayList.add(4,1);
+        arrayList.add(1,2);
+        arrayList.add(2,3);
+        arrayList.add(3,4);
+        arrayList.add(4,5);
         arrayList.add(1);
         arrayList.add(1);
         arrayList.display();
-        arrayList.set(3,99);
+        arrayList.del(3);
+        arrayList.display();
+        System.out.println("++++++++++++++");
+        arrayList.clear();
         arrayList.display();
 
     }
