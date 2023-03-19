@@ -18,16 +18,14 @@ public class demo2 {
         System.out.println(func("welcom to bit","come"));
     }
     public  static  List<Character> func (String s1,String s2){
-        ArrayList<Character> arrayList1=new ArrayList<Character>(Integer.parseInt(s1));
-        ArrayList<Character> arrayList2=new ArrayList<Character>(Integer.parseInt(s2));
-        for (int i = 0; i < arrayList2.size(); i++) {
-            for (int j = 0; j < arrayList1.size(); j++) {
-                if(arrayList1.contains(arrayList2.get(i)) ){
-                    arrayList1.remove(i);
-                }
-            }
+        List<Character> ret =new ArrayList<>();
+        for (int i = 0; i < s1.length(); i++) {
+             char ch =s1.charAt(i);
+             if(!s2.contains(ch+"")){
+                 ret.add(s1.charAt(i));
+             }
         }
-        return arrayList1;
+        return ret;
     }
     class Solution {
         public List<List<Integer>> generate(int numRows) {
