@@ -63,6 +63,7 @@ public class MysingleList {
         reverselist();
         ListNode cur =head;
         while(--k>0){
+            
             cur =cur.next;
         }
         System.out.println(cur.val);
