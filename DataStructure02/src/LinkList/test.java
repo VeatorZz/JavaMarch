@@ -5,17 +5,25 @@ public class test {
         MysingleList mysingleList=new MysingleList();
         mysingleList.creatlist();
         mysingleList.display();
-        mysingleList.contains(34);
+//        mysingleList.contains(34);
 //        System.out.println(mysingleList.contains(23));
 //        System.out.println();
 //        System.out.println(mysingleList.size());
 //        mysingleList.addFirst(99);
 //        mysingleList.display();
-        mysingleList.addLast(5623);
+//        mysingleList.addLast(5623);
+//        mysingleList.display();
+//        mysingleList.addIndex(1,5614156);
+//        mysingleList.display();
+//       mysingleList.remove2(23);
+//        mysingleList.display();
+ //       mysingleList.remove(45);
+        mysingleList.reverselist();
         mysingleList.display();
-        mysingleList.addIndex(1,5614156);
-        mysingleList.display();
-        mysingleList.remove(12);
-        mysingleList.display();
+//        MysingleList.ListNode ret =mysingleList.middleNode()
+//        System.out.println(ret.val);
+        mysingleList.func1(3);
+        mysingleList.func2(2);
+
     }
 }

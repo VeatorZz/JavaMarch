@@ -21,10 +21,13 @@ public class MysingleList {
         ListNode listNode3 = new ListNode(34);
         ListNode listNode4 = new ListNode(45);
         ListNode listNode5 = new ListNode(56);
+        ListNode listNode6 = new ListNode(23);
+
         listNode1.next = listNode2;
         listNode2.next = listNode3;
         listNode3.next = listNode4;
         listNode4.next = listNode5;
+        listNode5.next = listNode6;
         this.head = listNode1;
     }
 
@@ -36,6 +39,34 @@ public class MysingleList {
             cur = cur.next;
         }
         System.out.println();
+    }
+    public  void func2(int k)/**快慢指针法**/{
+        if(k<= 0||k>size()){
+            System.out.println("你tm劈我瓜是吧");
+        }
+        if(head == null){
+
+        }
+        ListNode fast =head;
+        ListNode slow =head;
+        int m =k-1;
+        while(m-->0){
+            fast=fast.next;
+        }
+        while(fast.next !=null){
+            fast=fast.next;
+            slow=slow.next;
+        }
+        System.out.println(slow.val);
+    }
+    public  void func1 (int k)/**输入倒数第K个**/{
+        reverselist();
+        ListNode cur =head;
+        while(--k>0){
+            cur =cur.next;
+        }
+        System.out.println(cur.val);
+        reverselist();
     }
 
     public boolean contains(int key) {
@@ -98,25 +129,93 @@ public class MysingleList {
     }
 
     public void remove(int key) {
-        if(this.head == null){
-            return ;
-        }
-        if(head.val == key){
-            head =head.next;
-        }
-        ListNode cur =this.head;
-         while(cur.next !=null){
-             if(cur.next.val == key){
-                 cur.next=cur.next.next;
-                 break;
-             }
-             cur =cur.next;
+        while (contains(key)) {
+            if (this.head == null) {
+                return;
+            }
+            if (head.val == key) {
+                head = head.next;
+            }
+            ListNode cur = this.head;
+            while (cur.next != null) {
+                if (cur.next.val == key) {
+                    cur.next = cur.next.next;
+                    break;
+                }
+                cur = cur.next;
 
-         }
+            }
+            System.out.println("你输入的啥JB玩意,没有!");
+
+        }
+    }
+
+    public void remove2(int key) {
+        if (this.head == null) {
+            return;
+        }
+        if (head.val == key) {
+            head = head.next;
+        }
+        ListNode cur = this.head.next;
+        ListNode pre = this.head;
+        while (cur != null) {
+            if (cur.val == key) {
+                pre.next = cur.next;
+                cur = pre.next;
+            }
+            cur = cur.next;
+            pre = pre.next;
+        }
         System.out.println("你输入的啥JB玩意,没有!");
+    }
 
+    public ListNode clear() {
+        if (head == null) {
+            return head;
+        }
+        if (head.next == null) {
+            return head;
+        }
+        ListNode cur = head.next;
+        head.next = null;
+        while (cur != null) {
+            ListNode curNext = cur.next;
+            cur.next = head;
+            head = cur;
+            cur = curNext;
+        }
+        return head;
+    }
+
+    public ListNode reverselist(){
+        if(head == null){
+            return null;
+        }
+        if(head.next ==null){
+            return  head;
+        }
+        ListNode cur =head.next;
+        head.next =null;
+        while(cur!=null){
+            ListNode curNext=cur.next;
+            cur.next =head;
+            head =cur;
+            cur= curNext;
+        }
+        return head;
+    }
+    public ListNode middleNode(){
+        ListNode fast =head;
+        ListNode slow =head;
+        while(fast != null && fast.next != null){
+            fast =fast.next.next;
+            slow =slow.next;
+        }
+        return slow;
     }
 }
+
 
 
 
