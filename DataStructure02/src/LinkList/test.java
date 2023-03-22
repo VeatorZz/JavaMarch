@@ -20,10 +20,12 @@ public class test {
  //       mysingleList.remove(45);
         mysingleList.reverselist();
         mysingleList.display();
+        mysingleList.clear();
+        mysingleList.display();
+        mysingleList.chkPalindrome(mysingleList.head);
 //        MysingleList.ListNode ret =mysingleList.middleNode()
 //        System.out.println(ret.val);
-        mysingleList.func1(3);
-        mysingleList.func2(2);
+
 
     }
 }

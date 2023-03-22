@@ -63,7 +63,7 @@ public class MysingleList {
         reverselist();
         ListNode cur =head;
         while(--k>0){
-            
+
             cur =cur.next;
         }
         System.out.println(cur.val);
@@ -127,6 +127,41 @@ public class MysingleList {
 
         node.next = cur.next;
         cur.next = node;
+    }
+    public boolean chkPalindrome(ListNode Head) {
+        if(Head ==null){
+            return false;
+        }
+        if(Head.next ==null){
+            return true;
+        }
+        // write code here
+        ListNode fast =Head;
+        ListNode slow =Head;
+        while( fast != null&&fast.next != null ){
+            fast=fast.next.next;
+            slow=slow.next;
+        }
+        ListNode cur =slow.next;
+        while(cur != null){
+            ListNode curNext =cur.next;
+            cur.next =slow;
+            slow =cur;
+            cur=curNext;
+        }
+        while(Head != slow){
+            if(Head.val !=slow.val){
+                return false;
+            }
+            if(Head.next == slow){
+                return true;
+            }
+            Head=Head.next;
+            slow =slow.next;
+        }
+
+        return true;
+
     }
 
     public void remove(int key) {
@@ -215,7 +250,47 @@ public class MysingleList {
         }
         return slow;
     }
-}
+    //根据给定的X分割当前的链表
+    public ListNode partition(int x) {
+        ListNode bs = null;
+        ListNode be = null;
+        ListNode as = null;
+        ListNode ae = null;
+
+        ListNode cur =head;
+        while(cur != head){
+            if(cur.val<x){
+                if(bs ==null){
+                    bs=cur;
+                    be=cur;
+                }else{
+                    be.next =cur;
+                    be=be.next;
+                }
+            }else{
+                if(as==null){
+                as=cur;
+                ae=cur;
+                }else{
+                    ae.next =cur;
+                    ae=ae.next;
+                }
+            }
+            cur =cur.next;
+            }
+        if (bs == null) {
+        return as;
+        }
+        if(as ==null){
+            return bs;
+        }
+            be.next = as;
+
+        return bs;
+        }
+
+    }
+
 
 
 
