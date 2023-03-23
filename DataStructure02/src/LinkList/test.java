@@ -1,6 +1,9 @@
 package LinkList;
 
 public class test {
+    public test() {
+    }
+
     public static void main(String[] args) {
         MysingleList mysingleList=new MysingleList();
         mysingleList.creatlist();
