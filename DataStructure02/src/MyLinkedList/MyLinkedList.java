@@ -46,6 +46,42 @@ public class MyLinkedList {
             }
         }
     }
+    public void removeAll(int key){
+        ListNode cur =head;
+        while(cur!= null){
+            if(cur.val ==key){
+                if(cur ==head){
+                    head =head.next;
+                    head.prev=null;
+                }else{
+                    cur.prev.next =cur.next;
+                    if(cur.next != null){
+                        cur.next.prev=cur.prev;
+                    }else {
+                        last = last.prev;
+                    }
+                }
+                cur=cur.next;
+            }else{
+                cur=cur.next;
+            }
+        }
+    }
+
+    MyLinkedList(){
+
+    }
+    public  void clear(){
+        ListNode cur = head;
+        while(cur != null){
+           ListNode curNext =cur.next;
+            cur.prev=null;
+            cur.next=null;
+            cur=curNext;
+        }
+        head =null;
+        last =null;
+    }
 
     public void display() {
         MyLinkedList.ListNode cur;

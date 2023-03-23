@@ -186,6 +186,27 @@ public class MysingleList {
         }
     }
 
+    public void removeALL(int key) {
+        while (contains(key)) {
+            if (this.head == null) {
+                return;
+            }
+            if (head.val == key) {
+                head = head.next;
+            }
+            ListNode cur = this.head;
+            while (cur.next != null) {
+                if (cur.next.val == key) {
+                    cur.next = cur.next.next;
+                    break;
+                }
+                cur = cur.next;
+
+            }
+            System.out.println("你输入的啥JB玩意,没有!");
+
+        }
+    }
     public void remove2(int key) {
         if (this.head == null) {
             return;
