@@ -1,5 +1,7 @@
 package LinkList;
 
+import java.util.Stack;
+
 public class MysingleList {
 
     static class ListNode {
@@ -308,6 +310,31 @@ public class MysingleList {
             be.next = as;
 
         return bs;
+        }
+        public void display3(ListNode head) {
+            if (head == null) return;
+
+
+            if (head.next == null) {
+                System.out.println(head.val);
+                return;
+            }
+            display3(head.next);
+            System.out.println(head.val);
+        }
+        public void display4(ListNode head) {
+            if (head == null) return;
+            ListNode cur = head;
+            Stack<ListNode> stack =new Stack<>();
+            while(cur != null){
+                stack.push(cur);
+                cur=cur.next;
+            }
+            while(!stack.empty()){
+                ListNode p=stack.pop();
+                System.out.println(p.val);
+            }
+
         }
 
     }
