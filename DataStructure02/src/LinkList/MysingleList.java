@@ -1,5 +1,7 @@
 package LinkList;
 
+import MyLinkedList.MyLinkedList;
+
 import java.util.Stack;
 
 public class MysingleList {
@@ -335,9 +337,28 @@ public class MysingleList {
                 System.out.println(p.val);
             }
 
-        }
 
+        }
+    public MyLinkedList.ListNode reverseList(MyLinkedList.MyLinkedList.ListNode head){
+        if(head ==null){
+            return null;
+        }
+        if(head.next == null){
+            return this.head;
+        }
+        MyLinkedList.ListNode cur =this.head.next;
+        while(cur != null){
+            MyLinkedList.MyLinkedList.ListNode curNext =cur.next;
+            cur.next=head;
+            head=cur;
+            cur= curNext;
+        }
+        return head;
     }
+
+
+
+}
 
 
 

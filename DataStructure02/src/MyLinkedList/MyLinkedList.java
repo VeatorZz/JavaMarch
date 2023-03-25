@@ -2,8 +2,10 @@ package MyLinkedList;
 
 import LinkList.MysingleList;
 
+import java.util.List;
+
 public class MyLinkedList {
-    static  class ListNode {
+    public static  class ListNode {
         public int val;
         public ListNode prev;
         public ListNode next;
@@ -161,8 +163,24 @@ public class MyLinkedList {
         cur.prev=node;
 
 
-        }
 
+        }
+    public ListNode reverseList(ListNode head){
+        if(head ==null){
+            return null;
+        }
+        if(head.next == null){
+            return this.head;
+        }
+        ListNode cur =this.head.next;
+        while(cur != null){
+            ListNode curNext =cur.next;
+            cur.next=head;
+            head=cur;
+            cur= curNext;
+        }
+        return head;
+    }
 
 
 }
