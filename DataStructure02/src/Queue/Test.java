@@ -11,6 +11,7 @@ public class Test {
         queue.offer(23);
         queue.offer(34);
         queue.offer(45);
+        queue.offer(78);
         int val = queue.peek();
         System.out.println(val);
 
