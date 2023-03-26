@@ -1,9 +1,5 @@
 package MyLinkedList;
 
-import LinkList.MysingleList;
-
-import java.util.List;
-
 public class MyLinkedList {
     public static  class ListNode {
         public int val;

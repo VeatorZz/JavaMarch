@@ -26,7 +26,6 @@ public class test {
         linkedList.add(12);
         linkedList.add(12);
         System.out.println(linkedList);
-        linkedList.r
         Iterator<Integer> iterator=linkedList.iterator();
         while(iterator.hasNext()){
             //不仅会打印下一个  还会让it往后走一步
