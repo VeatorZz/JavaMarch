@@ -17,7 +17,10 @@ public class Main {
         return (int) tmp;
     }
 
-    public static void main1019(String[] args) {
+
+    
+    //1019
+    public static void main(String[] args) {
         int t = 0;
         Scanner scanner = new Scanner(System.in);
         t = scanner.nextInt();//这个多组输入及标记一下,以后用这个
@@ -32,6 +35,7 @@ public class Main {
             }
             System.out.println(ans);
         }
+
     }
 
 
