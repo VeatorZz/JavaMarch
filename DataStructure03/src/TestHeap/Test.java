@@ -1,6 +1,7 @@
 package TestHeap;
 
 import javax.rmi.CORBA.StubDelegate;
+import java.util.Arrays;
 import java.util.Comparator;
 import java.util.PriorityQueue;
 class Student implements  Comparable<Student>{
@@ -29,12 +30,53 @@ class  IntCmp implements  Comparator<Integer>{
         return o2-o1;
     }
 }
+
 public class Test  {
+
+    //求最小的K个数
+    public static int[] minX(int[]array, int k){
+        PriorityQueue<Integer> priorityQueue = new PriorityQueue<Integer>(new Comparator<Integer>() {
+            @Override
+            public int compare(Integer o1, Integer o2) {
+                return o1-o2;
+            }
+        });
+        for (int i = 0; i < array.length; i++) {
+         priorityQueue.offer(array[i]);
+        }
+        int[] ret =new int[k];
+        for (int i = 0; i < k; i++) {
+            int val=priorityQueue.poll();
+            ret[i]=val;
+        }
+        return  ret;
+    }
+    public  static  int[]  topX(int[]array,int k){
+        IntCmp intCmp =new IntCmp();
+        PriorityQueue<Integer> priorityQueue =new PriorityQueue<>(intCmp);
+        for (int i = 0; i < array.length; i++) {
+            priorityQueue.offer(array[i]);
+        }
+        //大根堆的创建
+        int[] ret=new int[k];
+        for (int i = 0; i < k; i++) {
+            int val =priorityQueue.poll();
+            ret[i]=val;
+        }
+        return ret;
+    }
+
     public static void main(String[] args) {
+        int[] array ={10,4,20,19,45};
+        int[] ret =minX(array, 3);
+        System.out.println(Arrays.toString(ret));
+    }
+
+    public static void main5(String[] args) {
         IntCmp intCmp =new IntCmp();
         PriorityQueue<Integer> priorityQueue =new PriorityQueue<>(intCmp);
         priorityQueue.offer(21);
-        priorityQueue.offer(42);` 
+        priorityQueue.offer(42);
     }
         public static void main4(String[] args) {
         PriorityQueue<Integer> priorityQueue =new PriorityQueue<Integer>(new Comparator<Integer>() {
