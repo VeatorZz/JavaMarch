@@ -1,6 +1,8 @@
 package Sort;
 
 import java.util.Arrays;
+import java.util.Random;
+import java.util.Stack;
 
 public class TestSort {
     public static void shell(int[]array,int gap){
@@ -73,14 +75,141 @@ public class TestSort {
             }
             swap(array,low,high);
         }
-        array[low]=tmp;
+        array[low]=tmp;         
         return low;
         
     }
+    //双指针
+    private static int partition1(int[] array,int low,int high) {
+        int prev = low ;
+        int cur = low+1;
+        while (cur <= high) {
+            if(array[cur] < array[low] && array[++prev] != array[cur]) {
+                swap(array,cur,prev);
+            }
+            cur++;
+        }
+        swap(array,prev,low);
+        return prev;
+    }
+    //双指针
+    private static int partition(int[] array, int left, int right) {
+        int d = left + 1;
+        int pivot = array[left];
+        for (int i = left + 1; i <= right; i++) {
+            if (array[i] < pivot) {
+                swap(array, i, d);
+                d++;
+            }
+        }
+        swap(array, d - 1, left);
+        return d - 1;
+    }
+    //Hoaro法
+    public static int Hoarepartition(int[]array,int low,int high){
+        int i=low;
+        int tmp=array[low];
+        while(low<high){
+            while(low<high&&array[high]>=tmp){
+                high--;
+            }
+            while(low<high&&array[low]<=tmp){
+                low++;
+            }
+        }
+        swap(array, low, high);
+        return low;
+    }
+    //挖坑法
+    public  final static void func(int asd ){
+
+    }
+    public static  int DigPartition(int[] array, int low, int high){
+        int tmp=array[low];
+            while(low<high){
+                while(low<high && array[high]>=tmp){
+                    high--;
+                }
+                array[low]=array[high];
+                while(low<high && array[low]<=tmp){
+                    low++;
+                }
+                array[high]=array[low];
+            }
+            array[low]=tmp;
+            return low;
+
+    }
+    public static void insertSortRange(int[] array,int low,int end) {
+        for(int i = low+1;i <= end;i++) {
+            int tmp = array[i];
+            int j = i-1;
+            for (; j >= low ; j--) {
+                if(array[j] > tmp) {
+                    array[j+1] = array[j];
+                }else {
+                    break;
+                }
+            }
+            array[j+1] = tmp;
+        }
+    }
+    private static int medianOfThreeIndex(int[] array,int left,int right){
+    int mid =left+(right-left)>>>1;
+    if(array[left]<array[right]){
+        if(array[right]<array[mid]){
+            return right;
+        }else if(array[mid]<array[left]){
+            return left;
+        }
+        else{
+            return mid;
+        }
+    }
+    else{
+        if(array[left]<array[mid]){
+            return left;
+        }else if(array[right]>array[mid]){
+            return right;
+        }else {
+            return mid;
+        }
+    }
+
+    }
+    private static void quickNore(int[] array){
+        Stack<Integer> stack =new Stack<>();
+         int left =0;
+         int right=array.length-1;
+         int pivot=DigPartition(array, left, right);
+         if(pivot>left+1){
+             stack.push(left);
+             stack.push(pivot-1);
+         }
+         if(pivot<right-1){
+             stack.push(pivot+1);
+             stack.push(right);
+         }
+         while(!stack.isEmpty()){
+             right=stack.pop();
+             left=stack.pop();
+             pivot=DigPartition(array, left, right);
+             if(pivot>left+1){
+                 stack.push(left);
+                 stack.push(pivot-1);
+             }
+             if(pivot<right-1){
+                 stack.push(pivot+1);
+                 stack.push(right);
+             }
+         }
+
+    }
     public static void main(String[] args) {
-        int[] array ={5,10,3,8,2};
+        int[] array ={6,8,3,4,7,10,9,46,45};
+
         System.out.println("排序前"+ Arrays.toString(array));
-        insertSort(array);
+        quickNore(array);
         System.out.println("排序后"+ Arrays.toString(array));
 
     }
