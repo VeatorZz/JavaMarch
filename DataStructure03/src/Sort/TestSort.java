@@ -244,6 +244,9 @@ public class TestSort {
             array[i+low]=tmpArr[i];//因为这样后边的 才会进来,low在前一部分就是0
         }
     }
+
+
+
     private static void mergeSortNor(int[]array){
         int gap=1;
         while(gap< array.length){
@@ -262,11 +265,49 @@ public class TestSort {
             gap *=2;
         }
     }
+
+    //计数循环
+    //时间复杂度
+    public static  void countSort(int[]array){
+        //1.先找最大值最小值
+        int maxVal =0;
+        int minVal =0;
+        for (int i = 0; i < array.length; i++) {
+            if(array[i]<minVal){
+                minVal=array[i];
+            }
+            if(array[i]>maxVal){
+                maxVal=array[i];
+            }
+        }
+        //2.带入新数组计数
+        int[] count =new int[maxVal-minVal+1];
+        for (int i = 0; i < array.length; i++) {
+              count[array[i]-minVal]++;
+        }
+        //3.整出来
+//        for (int i = 0; i < count.length; i++) {
+//            while(count[i]!=0){
+//                System.out.print(i+minVal+" ");
+//                count[i]--;
+//            }
+//
+//        }
+        int index =0;
+        for (int i = 0; i < count.length; i++) {
+            while(count[i]!=0){
+                array[index++]=i+minVal;
+                count[i]--;
+            }
+
+        }
+
+    }
     public static void main(String[] args) {
-        int[] array ={6,8,3,4,7,10,9,46,45};
+        int[] array ={6,8,3,4,7,10,10,10,9,46,45};
 
         System.out.println("排序前"+ Arrays.toString(array));
-        mergeSortNor(array);
+        countSort(array);
         System.out.println("排序后"+ Arrays.toString(array));
 
     }
