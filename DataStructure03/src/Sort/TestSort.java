@@ -155,7 +155,7 @@ public class TestSort {
         }
     }
     private static int medianOfThreeIndex(int[] array,int left,int right){
-    int mid =left+(right-left)>>>1;
+    int mid =left+(right-left)/2;
     if(array[left]<array[right]){
         if(array[right]<array[mid]){
             return right;
