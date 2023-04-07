@@ -203,7 +203,43 @@ public class TestSort {
                  stack.push(right);
              }
          }
+    }
+    public static void mergeSort(int[] array){
 
+    }
+
+
+    //分开
+    private static void mergeSortInternal(int[]array,int low,int high){
+        if(low>=high) return;
+        int mid =low+(high-low)>>>1;
+        mergeSortInternal(array,low,mid);
+        mergeSortInternal(array,mid+1,high);
+        merge(array,low,mid,high);
+    }
+    private static void merge(int[]array,int low,int mid,int high){
+        int s1=low;
+        int e1=mid;
+        int s2=mid+1;
+        int e2=high;
+        int[] tmpArr=new int[high-low+1];
+        int k =0;
+        while(s1<=e1 &&s2<=e2){
+            if(array[s1]<=array[s2]){
+                tmpArr[k++]=array[s1++];
+            }else{
+                tmpArr[k++]=array[s2++];
+            }
+        }
+        while(s1<=e1){
+            tmpArr[k++]=array[s1++];
+        }
+        while(s2<=e2){
+            tmpArr[k++]=array[s2++];
+        }
+        for (int i = 0; i < array.length; i++) {
+            array[i]=tmpArr[k++];
+        }
     }
     public static void main(String[] args) {
         int[] array ={6,8,3,4,7,10,9,46,45};
