@@ -204,15 +204,18 @@ public class TestSort {
              }
          }
     }
+    //时间复杂度:N*logN
+    //空间复杂度:O(n)
     public static void mergeSort(int[] array){
-
+      mergeSortInternal(array,0,array.length-1);
     }
 
 
     //分开
     private static void mergeSortInternal(int[]array,int low,int high){
         if(low>=high) return;
-        int mid =low+(high-low)>>>1;
+
+        int mid =low+((high-low)>>>1);
         mergeSortInternal(array,low,mid);
         mergeSortInternal(array,mid+1,high);
         merge(array,low,mid,high);
@@ -237,15 +240,33 @@ public class TestSort {
         while(s2<=e2){
             tmpArr[k++]=array[s2++];
         }
-        for (int i = 0; i < array.length; i++) {
-            array[i]=tmpArr[k++];
+        for (int i = 0; i < tmpArr.length; i++) {
+            array[i+low]=tmpArr[i];//因为这样后边的 才会进来,low在前一部分就是0
+        }
+    }
+    private static void mergeSortNor(int[]array){
+        int gap=1;
+        while(gap< array.length){
+            for (int i = 0; i < array.length; i +=2*gap) {
+                int left =i;
+                int mid =left+gap-1;
+                if(mid>=array.length){
+                    mid =array.length-1;
+                }
+                int right =mid +gap;
+                if(right>=array.length){
+                    right=array.length-1;
+                }
+                merge(array,left,mid,right);
+            }
+            gap *=2;
         }
     }
     public static void main(String[] args) {
         int[] array ={6,8,3,4,7,10,9,46,45};
 
         System.out.println("排序前"+ Arrays.toString(array));
-        quickNore(array);
+        mergeSortNor(array);
         System.out.println("排序后"+ Arrays.toString(array));
 
     }
