@@ -146,7 +146,7 @@ public class TestSort {
             int j = i-1;
             for (; j >= low ; j--) {
                 if(array[j] > tmp) {
-                    array[j+1] = array[j];
+                    array[j+1] = array[j];//1
                 }else {
                     break;
                 }
