@@ -21,7 +21,7 @@ public class BinarySearchTree {
     }
     TreeNode cur =root;
     TreeNode parent =null;
-    while(root != null){
+    while(cur != null){
         if(cur.key<key){
             parent =cur;
             cur =cur.right;
@@ -50,6 +50,21 @@ public class BinarySearchTree {
         inorder(root.left);
         System.out.println(root.key+" ");
         inorder(root.right);
+    }
+
+
+    public TreeNode search(int key){
+        TreeNode cur =root;
+        while(cur != null){
+            if(cur.key ==key){
+                return cur;
+            }else if(cur.key<key){
+                cur =cur.left;
+            }else{
+                cur =cur.right;
+            }
+        }
+        return null;
     }
 
 

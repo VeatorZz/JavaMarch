@@ -7,5 +7,8 @@ public class Test {
         for (int i = 0; i < array.length; i++) {
             binarySearchTree.insert(array[i]);
         }
+        System.out.println();
+        BinarySearchTree.TreeNode  ret =binarySearchTree.search(18);
+        System.out.println(ret.key);
     }
 }
