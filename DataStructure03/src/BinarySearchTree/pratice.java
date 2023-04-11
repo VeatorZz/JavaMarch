@@ -3,8 +3,9 @@ package BinarySearchTree;
 import java.util.*;
 
 public class pratice {
+    //回头再写
     public List<String> topKFrequent(String[] words, int k) {
-    PriorityQueue< >
+return null;
     }
     public  static void func (String str1,String str2){
         Set<Character> set2 =new TreeSet<>();
