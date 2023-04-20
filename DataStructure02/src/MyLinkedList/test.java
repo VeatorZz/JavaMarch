@@ -31,7 +31,7 @@ public class test {
             //不仅会打印下一个  还会让it往后走一步
             System.out.println();
         }
-        ListIterator<Integer> listIterator1=linkedList.listIterator(linkedList.size());
+        ListIterator<Integer> listIterator1=linkedList.listIterator(linkedList.size()A);
         while(listIterator1.hasPrevious()){
             System.out.println(listIterator1.previous());
         }

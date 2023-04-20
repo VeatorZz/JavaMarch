@@ -118,14 +118,16 @@ public class BinaryTree {
         return null;
     }
 
+
     public void levelOrder(TreeNode root) {
-        if (root == null) return;
-        Queue<TreeNode> queue = new LinkedList<>();
-        queue.offer(root);
-        while (!queue.isEmpty()) {
+        if (root == null) return;//把特殊情况拿出来
+        Queue<TreeNode> queue = new LinkedList<>();//创建个队列
+        queue.offer(root);//将root头放下
+        while (!queue.isEmpty()) {//进入循环当队列等于空时出来
+             //整体思路就是将root和root left和right 按顺序放在队列里,先进先出
             TreeNode cur = queue.poll();
             System.out.print(cur.val + " ");
-            if (cur.left != null) {
+            if (cur.left != null) {//必须要把left 放前面
                 queue.offer(cur.left);
             }
             if (cur.right != null) {
@@ -136,7 +138,8 @@ public class BinaryTree {
 
     }
 
-    public List<List<Character>> levelOrder1(TreeNode root) {
+    public List<List<Character>> levelOrder1(TreeNode root) {//这个思路是一样的,只不过是按照每一层每一次层遍历,加了一个size,多了一个arraylist
+        //每层先设好个数,然后--
         List<List<Character>> ret = new ArrayList<>();
         if (root == null) return ret;
         Queue<TreeNode> queue = new LinkedList<>();
@@ -159,7 +162,9 @@ public class BinaryTree {
         }
         return ret;
     }
+
 }
+
 //    public List<Character> postorderTraversal(TreeNode root) {
 //        List<Character> list =new ArrayList<>();
 //        if(root !=null) return list;
